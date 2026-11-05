@@ -1,0 +1,343 @@
+
+<div class="sheet-wrap">
+  <header class="sheet-header">
+    <div class="sheet-brand">
+      <div class="sheet-kicker">HE WHO FIGHTS</div>
+      <div class="sheet-logo">MONSTERS</div>
+      <div class="sheet-subtitle">ROLEPLAYING GAME</div>
+    </div>
+    <div class="sheet-identity">
+      <label>Name: <input type="text" name="attr_character_name" /></label>
+      <label>Role: <input type="text" name="attr_role" /></label>
+      <label>Nature: <input type="text" name="attr_nature" /></label>
+      <label>Rank: <input type="text" name="attr_rank" /></label>
+    </div>
+    <div class="sheet-komt" aria-label="K O M T stars">
+      <label>K <input type="checkbox" name="attr_komt_k" value="1" /><span class="sheet-star"></span></label>
+      <label>O <input type="checkbox" name="attr_komt_o" value="1" /><span class="sheet-star"></span></label>
+      <label>M <input type="checkbox" name="attr_komt_m" value="1" /><span class="sheet-star"></span></label>
+      <label>T <input type="checkbox" name="attr_komt_t" value="1" /><span class="sheet-star"></span></label>
+    </div>
+    <div class="sheet-resource">
+      <div class="sheet-resource-title">Health</div>
+      <div class="sheet-resource-pair"><input type="number" name="attr_hp_current" value="10" /><b>/</b><input type="number" name="attr_hp_max" value="10" /></div>
+      <div class="sheet-resource-labels"><span>Current</span><span>Max</span></div>
+      <label class="sheet-temp">Temp <input type="checkbox" name="attr_hp_temp_toggle" value="1" /><span class="sheet-temp-circle"></span></label>
+      <input class="sheet-temp-value" type="number" name="attr_temp_hp" value="0" title="Temporary health amount" />
+    </div>
+    <div class="sheet-resource">
+      <div class="sheet-resource-title">Mana</div>
+      <div class="sheet-resource-pair"><input type="number" name="attr_mana_current" value="10" /><b>/</b><input type="number" name="attr_mana_max" value="10" /></div>
+      <div class="sheet-resource-labels"><span>Current</span><span>Max</span></div>
+      <label class="sheet-temp">Temp <input type="checkbox" name="attr_mana_temp_toggle" value="1" /><span class="sheet-temp-circle"></span></label>
+      <input class="sheet-temp-value" type="number" name="attr_temp_mana" value="0" title="Temporary mana amount" />
+    </div>
+    <div class="sheet-ac-speed">
+      <label>AC <input type="number" name="attr_ac" value="10" /></label>
+      <label>Speed <input type="number" name="attr_speed" value="30" /></label>
+    </div>
+  </header>
+  <div class="sheet-proficiency">Proficiency Bonus <input type="number" name="attr_proficiency_bonus" value="2" /></div>
+  <section class="sheet-stat-grid">
+    <div class="sheet-stat-card">
+      <div class="sheet-stat-heading">POWER</div>
+      <label>Score <input type="number" name="attr_power" value="10" /></label>
+      <label>Modifier <input type="number" name="attr_power_mod" value="0" readonly /></label>
+      <button type="roll" name="roll_power" value="&{template:default} {{name=Power}} {{Roll=[[1d20 + @{power_mod}]]}}">Roll Power</button>
+      <div class="sheet-skills-heading">SKILLS</div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_athletics_prof" value="1" /> Athletics</label><input type="number" name="attr_athletics" value="0" readonly /><button type="roll" name="roll_athletics" value="&{template:default} {{name=Athletics}} {{Roll=[[1d20 + @{athletics}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_intimidation_prof" value="1" /> Intimidation</label><input type="number" name="attr_intimidation" value="0" readonly /><button type="roll" name="roll_intimidation" value="&{template:default} {{name=Intimidation}} {{Roll=[[1d20 + @{intimidation}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_endurance_prof" value="1" /> Endurance</label><input type="number" name="attr_endurance" value="0" readonly /><button type="roll" name="roll_endurance" value="&{template:default} {{name=Endurance}} {{Roll=[[1d20 + @{endurance}]]}}">Roll</button></div>
+    </div>
+
+    <div class="sheet-stat-card">
+      <div class="sheet-stat-heading">SPEED</div>
+      <label>Score <input type="number" name="attr_speed_stat" value="10" /></label>
+      <label>Modifier <input type="number" name="attr_speed_stat_mod" value="0" readonly /></label>
+      <button type="roll" name="roll_speed_stat" value="&{template:default} {{name=Speed}} {{Roll=[[1d20 + @{speed_stat_mod}]]}}">Roll Speed</button>
+      <div class="sheet-skills-heading">SKILLS</div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_acrobatics_prof" value="1" /> Acrobatics</label><input type="number" name="attr_acrobatics" value="0" readonly /><button type="roll" name="roll_acrobatics" value="&{template:default} {{name=Acrobatics}} {{Roll=[[1d20 + @{acrobatics}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_sneak_prof" value="1" /> Sneak</label><input type="number" name="attr_sneak" value="0" readonly /><button type="roll" name="roll_sneak" value="&{template:default} {{name=Sneak}} {{Roll=[[1d20 + @{sneak}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_reflexes_prof" value="1" /> Reflexes</label><input type="number" name="attr_reflexes" value="0" readonly /><button type="roll" name="roll_reflexes" value="&{template:default} {{name=Reflexes}} {{Roll=[[1d20 + @{reflexes}]]}}">Roll</button></div>
+    </div>
+
+    <div class="sheet-stat-card">
+      <div class="sheet-stat-heading">SPIRIT</div>
+      <label>Score <input type="number" name="attr_spirit" value="10" /></label>
+      <label>Modifier <input type="number" name="attr_spirit_mod" value="0" readonly /></label>
+      <button type="roll" name="roll_spirit" value="&{template:default} {{name=Spirit}} {{Roll=[[1d20 + @{spirit_mod}]]}}">Roll Spirit</button>
+      <div class="sheet-skills-heading">SKILLS</div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_magic_prof" value="1" /> Magic</label><input type="number" name="attr_magic" value="0" readonly /><button type="roll" name="roll_magic" value="&{template:default} {{name=Magic}} {{Roll=[[1d20 + @{magic}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_social_prof" value="1" /> Social</label><input type="number" name="attr_social" value="0" readonly /><button type="roll" name="roll_social" value="&{template:default} {{name=Social}} {{Roll=[[1d20 + @{social}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_lore_prof" value="1" /> Lore</label><input type="number" name="attr_lore" value="0" readonly /><button type="roll" name="roll_lore" value="&{template:default} {{name=Lore}} {{Roll=[[1d20 + @{lore}]]}}">Roll</button></div>
+    </div>
+
+    <div class="sheet-stat-card">
+      <div class="sheet-stat-heading">RECOVERY</div>
+      <label>Score <input type="number" name="attr_recovery" value="10" /></label>
+      <label>Modifier <input type="number" name="attr_recovery_mod" value="0" readonly /></label>
+      <button type="roll" name="roll_recovery" value="&{template:default} {{name=Recovery}} {{Roll=[[1d20 + @{recovery_mod}]]}}">Roll Recovery</button>
+      <div class="sheet-skills-heading">SKILLS</div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_medicine_prof" value="1" /> Medicine</label><input type="number" name="attr_medicine" value="0" readonly /><button type="roll" name="roll_medicine" value="&{template:default} {{name=Medicine}} {{Roll=[[1d20 + @{medicine}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_survival_prof" value="1" /> Survival</label><input type="number" name="attr_survival" value="0" readonly /><button type="roll" name="roll_survival" value="&{template:default} {{name=Survival}} {{Roll=[[1d20 + @{survival}]]}}">Roll</button></div>
+      <div class="sheet-skill"><label><input type="checkbox" name="attr_sanity_prof" value="1" /> Sanity</label><input type="number" name="attr_sanity" value="0" readonly /><button type="roll" name="roll_sanity" value="&{template:default} {{name=Sanity}} {{Roll=[[1d20 + @{sanity}]]}}">Roll</button></div>
+    </div>
+  </section>
+
+  <section class="sheet-extra-grid">
+    <label>Resistances <textarea name="attr_resistances" rows="2"></textarea></label>
+    <label>Vulnerabilities <textarea name="attr_vulnerabilities" rows="2"></textarea></label>
+    <label>Conditions / Notes <textarea name="attr_conditions" rows="2"></textarea></label>
+  </section>
+
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="attacks" id="tab-attacks" checked="checked" />
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="inventory" id="tab-inventory" />
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="essence1" id="tab-essence1" />
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="essence2" id="tab-essence2" />
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="essence3" id="tab-essence3" />
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="essence4" id="tab-essence4" />
+  <input class="sheet-tabtoggle" type="radio" name="attr_sheet_tab" value="familiars" id="tab-familiars" />
+
+  <nav class="sheet-tabs">
+    <label for="tab-attacks">Attacks</label>
+    <label for="tab-inventory">Inventory</label>
+    <label for="tab-essence1">Essence 1</label>
+    <label for="tab-essence2">Essence 2</label>
+    <label for="tab-essence3">Essence 3</label>
+    <label for="tab-essence4">Essence 4</label>
+    <label for="tab-familiars">Familiars</label>
+  </nav>
+
+  <div class="sheet-panels">
+    <section class="sheet-panel sheet-attacks">
+      <h3>ATTACKS</h3>
+      <div class="sheet-table-head sheet-attack-row"><span>Attack</span><span>Type</span><span>Range</span><span>To Hit</span><span>Damage</span><span>Notes</span></div>
+      <fieldset class="repeating_attacks">
+        <div class="sheet-attack-row">
+          <input type="text" name="attr_attack_name" placeholder="Attack name" />
+          <input type="text" name="attr_attack_type" placeholder="Type" />
+          <input type="text" name="attr_attack_range" placeholder="Range" />
+          <input type="text" name="attr_attack_hit" placeholder="+0" />
+          <input type="text" name="attr_attack_damage" placeholder="1d6" />
+          <input type="text" name="attr_attack_notes" placeholder="Notes" />
+        </div>
+      </fieldset>
+    </section>
+
+    <section class="sheet-panel sheet-inventory">
+      <h3>INVENTORY</h3>
+      <div class="sheet-table-head sheet-inventory-row"><span>Item</span><span>Qty</span><span>Weight</span><span>Notes</span></div>
+      <fieldset class="repeating_inventory">
+        <div class="sheet-inventory-row">
+          <input type="text" name="attr_item_name" placeholder="Item name" />
+          <input type="number" name="attr_item_qty" value="1" />
+          <input type="text" name="attr_item_weight" placeholder="—" />
+          <input type="text" name="attr_item_notes" placeholder="Description / notes" />
+        </div>
+      </fieldset>
+      <label class="sheet-currency">Currency / Other Resources <input type="text" name="attr_currency" /></label>
+    </section>
+
+    <section class="sheet-panel sheet-essence1">
+      <h3>ESSENCE 1</h3>
+      <div class="sheet-table-head sheet-ability-row"><span>Name</span><span>Mana Cost</span><span>To Hit</span><span>Damage</span></div>
+      <div class="sheet-ability-row">
+        <input type="text" name="attr_e1_ability1_name" placeholder="Ability 1" />
+        <input type="text" name="attr_e1_ability1_mana" placeholder="0" />
+        <input type="text" name="attr_e1_ability1_hit" placeholder="—" />
+        <input type="text" name="attr_e1_ability1_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e1_ability1_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e1_ability2_name" placeholder="Ability 2" />
+        <input type="text" name="attr_e1_ability2_mana" placeholder="0" />
+        <input type="text" name="attr_e1_ability2_hit" placeholder="—" />
+        <input type="text" name="attr_e1_ability2_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e1_ability2_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e1_ability3_name" placeholder="Ability 3" />
+        <input type="text" name="attr_e1_ability3_mana" placeholder="0" />
+        <input type="text" name="attr_e1_ability3_hit" placeholder="—" />
+        <input type="text" name="attr_e1_ability3_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e1_ability3_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e1_ability4_name" placeholder="Ability 4" />
+        <input type="text" name="attr_e1_ability4_mana" placeholder="0" />
+        <input type="text" name="attr_e1_ability4_hit" placeholder="—" />
+        <input type="text" name="attr_e1_ability4_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e1_ability4_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e1_ability5_name" placeholder="Ability 5" />
+        <input type="text" name="attr_e1_ability5_mana" placeholder="0" />
+        <input type="text" name="attr_e1_ability5_hit" placeholder="—" />
+        <input type="text" name="attr_e1_ability5_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e1_ability5_notes" rows="1" placeholder="Optional description / effect"></textarea>
+    </section>
+
+    <section class="sheet-panel sheet-essence2">
+      <h3>ESSENCE 2</h3>
+      <div class="sheet-table-head sheet-ability-row"><span>Name</span><span>Mana Cost</span><span>To Hit</span><span>Damage</span></div>
+      <div class="sheet-ability-row">
+        <input type="text" name="attr_e2_ability1_name" placeholder="Ability 1" />
+        <input type="text" name="attr_e2_ability1_mana" placeholder="0" />
+        <input type="text" name="attr_e2_ability1_hit" placeholder="—" />
+        <input type="text" name="attr_e2_ability1_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e2_ability1_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e2_ability2_name" placeholder="Ability 2" />
+        <input type="text" name="attr_e2_ability2_mana" placeholder="0" />
+        <input type="text" name="attr_e2_ability2_hit" placeholder="—" />
+        <input type="text" name="attr_e2_ability2_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e2_ability2_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e2_ability3_name" placeholder="Ability 3" />
+        <input type="text" name="attr_e2_ability3_mana" placeholder="0" />
+        <input type="text" name="attr_e2_ability3_hit" placeholder="—" />
+        <input type="text" name="attr_e2_ability3_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e2_ability3_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e2_ability4_name" placeholder="Ability 4" />
+        <input type="text" name="attr_e2_ability4_mana" placeholder="0" />
+        <input type="text" name="attr_e2_ability4_hit" placeholder="—" />
+        <input type="text" name="attr_e2_ability4_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e2_ability4_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e2_ability5_name" placeholder="Ability 5" />
+        <input type="text" name="attr_e2_ability5_mana" placeholder="0" />
+        <input type="text" name="attr_e2_ability5_hit" placeholder="—" />
+        <input type="text" name="attr_e2_ability5_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e2_ability5_notes" rows="1" placeholder="Optional description / effect"></textarea>
+    </section>
+
+    <section class="sheet-panel sheet-essence3">
+      <h3>ESSENCE 3</h3>
+      <div class="sheet-table-head sheet-ability-row"><span>Name</span><span>Mana Cost</span><span>To Hit</span><span>Damage</span></div>
+      <div class="sheet-ability-row">
+        <input type="text" name="attr_e3_ability1_name" placeholder="Ability 1" />
+        <input type="text" name="attr_e3_ability1_mana" placeholder="0" />
+        <input type="text" name="attr_e3_ability1_hit" placeholder="—" />
+        <input type="text" name="attr_e3_ability1_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e3_ability1_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e3_ability2_name" placeholder="Ability 2" />
+        <input type="text" name="attr_e3_ability2_mana" placeholder="0" />
+        <input type="text" name="attr_e3_ability2_hit" placeholder="—" />
+        <input type="text" name="attr_e3_ability2_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e3_ability2_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e3_ability3_name" placeholder="Ability 3" />
+        <input type="text" name="attr_e3_ability3_mana" placeholder="0" />
+        <input type="text" name="attr_e3_ability3_hit" placeholder="—" />
+        <input type="text" name="attr_e3_ability3_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e3_ability3_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e3_ability4_name" placeholder="Ability 4" />
+        <input type="text" name="attr_e3_ability4_mana" placeholder="0" />
+        <input type="text" name="attr_e3_ability4_hit" placeholder="—" />
+        <input type="text" name="attr_e3_ability4_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e3_ability4_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e3_ability5_name" placeholder="Ability 5" />
+        <input type="text" name="attr_e3_ability5_mana" placeholder="0" />
+        <input type="text" name="attr_e3_ability5_hit" placeholder="—" />
+        <input type="text" name="attr_e3_ability5_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e3_ability5_notes" rows="1" placeholder="Optional description / effect"></textarea>
+    </section>
+
+    <section class="sheet-panel sheet-essence4">
+      <h3>ESSENCE 4</h3>
+      <div class="sheet-table-head sheet-ability-row"><span>Name</span><span>Mana Cost</span><span>To Hit</span><span>Damage</span></div>
+      <div class="sheet-ability-row">
+        <input type="text" name="attr_e4_ability1_name" placeholder="Ability 1" />
+        <input type="text" name="attr_e4_ability1_mana" placeholder="0" />
+        <input type="text" name="attr_e4_ability1_hit" placeholder="—" />
+        <input type="text" name="attr_e4_ability1_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e4_ability1_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e4_ability2_name" placeholder="Ability 2" />
+        <input type="text" name="attr_e4_ability2_mana" placeholder="0" />
+        <input type="text" name="attr_e4_ability2_hit" placeholder="—" />
+        <input type="text" name="attr_e4_ability2_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e4_ability2_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e4_ability3_name" placeholder="Ability 3" />
+        <input type="text" name="attr_e4_ability3_mana" placeholder="0" />
+        <input type="text" name="attr_e4_ability3_hit" placeholder="—" />
+        <input type="text" name="attr_e4_ability3_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e4_ability3_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e4_ability4_name" placeholder="Ability 4" />
+        <input type="text" name="attr_e4_ability4_mana" placeholder="0" />
+        <input type="text" name="attr_e4_ability4_hit" placeholder="—" />
+        <input type="text" name="attr_e4_ability4_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e4_ability4_notes" rows="1" placeholder="Optional description / effect"></textarea><div class="sheet-ability-row">
+        <input type="text" name="attr_e4_ability5_name" placeholder="Ability 5" />
+        <input type="text" name="attr_e4_ability5_mana" placeholder="0" />
+        <input type="text" name="attr_e4_ability5_hit" placeholder="—" />
+        <input type="text" name="attr_e4_ability5_damage" placeholder="—" />
+      </div>
+      <textarea class="sheet-ability-notes" name="attr_e4_ability5_notes" rows="1" placeholder="Optional description / effect"></textarea>
+    </section>
+
+    <section class="sheet-panel sheet-familiars">
+      <h3>FAMILIARS</h3>
+      <fieldset class="repeating_familiars">
+        <div class="sheet-familiar-card">
+          <div class="sheet-familiar-title"><label>Familiar Name <input type="text" name="attr_familiar_name" /></label><label>Type <input type="text" name="attr_familiar_type" /></label></div>
+          <div class="sheet-familiar-stats">
+            <label>HP <input type="number" name="attr_familiar_hp" value="1" /></label>
+            <label>AC <input type="number" name="attr_familiar_ac" value="10" /></label>
+            <label>Speed <input type="text" name="attr_familiar_speed" /></label>
+            <label>Ability / Trait <input type="text" name="attr_familiar_ability" /></label>
+          </div>
+          <label>Description / Notes <textarea name="attr_familiar_notes" rows="2"></textarea></label>
+        </div>
+      </fieldset>
+    </section>
+  </div>
+</div>
+
+<script type="text/worker">
+const statSkills = {
+  power: ["athletics", "intimidation", "endurance"],
+  speed_stat: ["acrobatics", "sneak", "reflexes"],
+  spirit: ["magic", "social", "lore"],
+  recovery: ["medicine", "survival", "sanity"]
+};
+
+function signedModifier(score) {
+  return Math.floor((Number(score || 10) - 10) / 2);
+}
+
+function updateSheet() {
+  getAttrs([
+    "power", "speed_stat", "spirit", "recovery", "proficiency_bonus",
+    "athletics_prof", "intimidation_prof", "endurance_prof",
+    "acrobatics_prof", "sneak_prof", "reflexes_prof",
+    "magic_prof", "social_prof", "lore_prof",
+    "medicine_prof", "survival_prof", "sanity_prof"
+  ], function(values) {
+    const prof = Number(values.proficiency_bonus || 0);
+    const updates = {
+      power_mod: signedModifier(values.power),
+      speed_stat_mod: signedModifier(values.speed_stat),
+      spirit_mod: signedModifier(values.spirit),
+      recovery_mod: signedModifier(values.recovery)
+    };
+
+    Object.keys(statSkills).forEach(function(statName) {
+      const statMod = signedModifier(values[statName]);
+      statSkills[statName].forEach(function(skill) {
+        updates[skill] = statMod + (values[skill + "_prof"] === "1" ? prof : 0);
+      });
+    });
+
+    setAttrs(updates);
+  });
+}
+
+on("sheet:opened change:power change:speed_stat change:spirit change:recovery change:proficiency_bonus change:athletics_prof change:intimidation_prof change:endurance_prof change:acrobatics_prof change:sneak_prof change:reflexes_prof change:magic_prof change:social_prof change:lore_prof change:medicine_prof change:survival_prof change:sanity_prof", updateSheet);
+</script>
