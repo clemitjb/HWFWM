@@ -1,0 +1,644 @@
+
+.charsheet .hm-sheet{box-sizing:border-box;width:100%;min-width:680px;max-width:1050px;min-height:1100px;margin:auto;padding:12px;color:#151a2a;background:linear-gradient(180deg,#aab6c7 0%,#b5c9e5 100%);border:3px double #354354;box-shadow:0 0 16px #c7a64b;font-family:Georgia,'Times New Roman',serif}
+.charsheet .hm-sheet *{box-sizing:border-box}
+.charsheet .hm-sheet input,.charsheet .hm-sheet textarea{min-width:0;border:0;border-bottom:1px solid #445264;border-radius:0;background:transparent;color:#101727;box-shadow:none;font-family:inherit;margin:0;padding:2px 3px}
+.charsheet .hm-sheet input[type=number]{width:45px;text-align:center}
+.charsheet .hm-sheet input[type=checkbox]{width:13px;height:13px;min-width:13px}
+.charsheet .hm-sheet h3,.charsheet .hm-sheet h4{margin:0;color:#390057;font-style:italic;font-weight:bold;text-align:center;text-shadow:1px 1px #d4a7e6}
+.charsheet .hm-header{display:grid;grid-template-columns:1.65fr 1fr .42fr 1fr 1fr .48fr;grid-template-rows:75px 80px;gap:3px 7px;align-items:end}
+.charsheet .hm-logo{grid-column:1/3;align-self:start;display:flex;flex-direction:column;color:#290046;line-height:1}
+.charsheet .hm-logo span{font-size:14px;font-weight:bold}.charsheet .hm-logo small{font-size:9px;margin-left:32px}.charsheet .hm-logo strong{font-size:32px;letter-spacing:-2px;text-shadow:2px 1px #9d8bb1}.charsheet .hm-logo em{font-size:9px;margin-left:40px}
+.charsheet .hm-ident{grid-column:1;grid-row:2;display:grid;gap:2px}.charsheet .hm-ident label{display:flex;align-items:center;font-size:13px;font-weight:bold;font-style:italic;color:#390057}.charsheet .hm-ident input{width:100%;flex:1}
+.charsheet .hm-deaths{grid-column:2;grid-row:2;align-self:start;font-size:11px;text-align:center}.charsheet .hm-deaths b{color:#390057;font-size:13px;font-style:italic}.charsheet .hm-deaths div{white-space:nowrap}
+.charsheet .hm-komt{grid-column:3;grid-row:1/3;align-self:end;display:grid;gap:0}.charsheet .hm-komt label{font-size:15px;display:flex;align-items:center;gap:3px}.charsheet .hm-komt input,.charsheet .hm-stars input{position:absolute;opacity:0;width:1px;height:1px}.charsheet .hm-komt span{font-size:22px;cursor:pointer;color:#53657c}.charsheet .hm-komt input:checked+span{color:#e4ad13;text-shadow:0 0 2px #654c00}.charsheet .hm-komt input:checked+span::after{content:'★';margin-left:-20px}
+.charsheet .hm-resource{grid-row:2;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:space-around}.charsheet .hm-resource:nth-of-type(5){grid-column:4}.charsheet .hm-resource:nth-of-type(6){grid-column:5}.charsheet .hm-resource-numbers{display:flex;gap:5px}.charsheet .hm-resource-numbers label{font-size:10px;text-transform:uppercase;text-align:center}.charsheet .hm-resource-numbers input{display:block;width:45px}.charsheet .hm-resource b{color:#390057;font-style:italic;font-size:19px}.charsheet .hm-temp{font-size:10px;text-transform:uppercase}.charsheet .hm-temp input{border:2px solid #465d75;border-radius:50%;width:34px;height:30px}.charsheet .hm-combat{grid-column:6;grid-row:2;display:grid;gap:9px}.charsheet .hm-combat label{font-size:14px;color:#390057;font-style:italic;font-weight:bold;text-align:center}.charsheet .hm-combat input{display:block;width:100%}
+.charsheet .hm-main{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:5px;height:315px}.charsheet .hm-stat,.charsheet .hm-aura{position:relative;border:2px ridge #576779;box-shadow:inset 1px 1px #e3e8ef;background:linear-gradient(180deg,#b4c2d2,#b9cce6)}.charsheet .hm-stat h3,.charsheet .hm-aura h3{font-size:15px;padding-top:4px}.charsheet .hm-stat-score{height:64px;display:flex;align-items:center;justify-content:center;gap:4px;border-bottom:3px double #5e6d7e}.charsheet .hm-stat-score>input{width:47px;font-size:23px;font-weight:bold}.charsheet .hm-stat-score span{display:flex;flex-direction:column;font-size:9px;text-align:center}.charsheet .hm-stat-score span input{width:35px}.charsheet .hm-skills{padding:9px 3px}.charsheet .hm-skills label{display:flex;align-items:center;gap:1px;font-size:10px;font-variant:small-caps;white-space:nowrap}.charsheet .hm-skills button[type=roll]{flex:none;width:16px;min-width:16px;padding:0;margin:0 1px;background:transparent;border:0;color:#242e3c;font-size:11px;line-height:16px}.charsheet .hm-skills input[type=number]{width:25px;font-size:10px;margin-left:auto}.charsheet .hm-speed-toggles{position:absolute;top:-16px;left:0;right:0;display:flex;justify-content:space-around;font-size:9px}.charsheet .hm-speed-toggles input{width:25px;font-size:9px}
+.charsheet .hm-aura-strength{text-align:center;font-size:10px;height:55px;border-bottom:3px double #5e6d7e}.charsheet .hm-aura-strength input{display:block;margin:auto!important}.charsheet .hm-linked{text-align:center;text-transform:uppercase;font-size:11px;border-bottom:1px solid #445264}.charsheet .hm-aura h4{font-size:13px;margin:7px 0}.charsheet .hm-shield{height:125px;width:90%;margin:4px auto;background-image:url('https://placehold.co/240x300/afbdd0/4a3555?text=YOUR+SHIELD');background-position:center;background-repeat:no-repeat;background-size:contain}.charsheet .hm-stars{display:flex;justify-content:space-around;align-items:center}.charsheet .hm-stars span{display:block;font-size:31px;color:#9a760f;text-shadow:1px 1px #453d1d;cursor:pointer}.charsheet .hm-stars input:checked+span{color:#e9b523}.charsheet .hm-stars input:checked+span::before{content:'★';position:absolute}
+.charsheet .hm-notes{margin-top:3px}.charsheet .hm-notes label{display:flex;align-items:center;border:1px solid #64768b;min-height:22px;color:#390057;font-weight:bold;font-style:italic;font-size:13px;padding-left:5px}.charsheet .hm-notes input{flex:1;margin-left:6px}
+.charsheet .hm-tabs{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));margin-top:5px;border-top:1px solid #4d5b6b;border-bottom:1px solid #4d5b6b}.charsheet .hm-tabs label{margin:0;padding:5px 1px;border-right:1px solid #627184;text-align:center;text-transform:uppercase;font-size:10px;cursor:pointer}.charsheet .hm-tab-control{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;pointer-events:none}.charsheet .hm-panels{min-height:450px}.charsheet .hm-panel{display:none;min-height:430px}.charsheet .hm-panel h4{text-align:left;padding:8px;font-size:17px}.charsheet .hm-table-head{font-size:11px;text-transform:uppercase;border-bottom:1px solid #566779}.charsheet .hm-attack-grid{display:grid;grid-template-columns:2.5fr .8fr .9fr 1.1fr 1.4fr 36px;gap:2px}.charsheet .hm-attack-grid>*{border-right:1px solid #7d8997}.charsheet .hm-attack-row input{width:100%}.charsheet .hm-ability-row{display:grid;grid-template-columns:2fr .6fr 1fr 1fr 40px;gap:5px}.charsheet .hm-ability-row input{width:100%}.charsheet .hm-panel textarea{display:block;width:100%;min-height:60px;margin-top:5px}.charsheet .hm-inventory-row{display:grid;grid-template-columns:2fr 50px 75px 2fr;gap:8px}.charsheet .hm-inventory-row input{width:100%}.charsheet .hm-familiar-row{display:grid;grid-template-columns:2fr 1fr 55px;gap:8px}.charsheet .hm-familiar-row textarea{grid-column:1/-1}.charsheet .hm-essence-slot{display:grid;grid-template-columns:25px 2fr 70px 80px 1fr 40px;gap:5px;align-items:center;padding:8px 3px;border-bottom:1px solid #6b8096}.charsheet .hm-essence-slot label{font-size:10px}.charsheet .hm-essence-slot input{width:100%}.charsheet .hm-essence-slot textarea{grid-column:2/-1;min-height:45px}.charsheet .hm-sheet button[type=roll]{cursor:pointer}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.charsheet .hm-sheet {
+  width: 760px;
+  min-width: 760px;
+  max-width: 760px;
+  height: 1416.49px;
+  min-height: 1416.49px;
+  max-height: 1416.49px;
+  margin: 0 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.charsheet .hm-header {
+  flex: 0 0 184px;
+  grid-template-rows: 86px 94px;
+  grid-template-columns: 1.65fr 1fr .42fr 1fr 1fr .48fr;
+}
+.charsheet .hm-main {
+  flex: 0 0 348px;
+  height: 348px;
+  min-height: 348px;
+  margin-top: 6px;
+}
+.charsheet .hm-notes { flex: 0 0 auto; margin-top: 5px; }
+.charsheet .hm-notes label { min-height: 25px; }
+.charsheet .hm-tabs { flex: 0 0 auto; margin-top: 6px; }
+.charsheet .hm-tabs label { padding: 7px 1px; font-size: 10px; }
+.charsheet .hm-panels {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.charsheet .hm-panel { min-height: 100%; }
+.charsheet .hm-shield { height: 140px; }
+
+
+
+.charsheet .hm-action-head,.charsheet .hm-action-display{display:grid;align-items:center;gap:3px}
+.charsheet .hm-attack-cols,.charsheet .hm-attacks .hm-action-display{grid-template-columns:2fr .7fr .8fr 1fr 1fr 48px}
+.charsheet .hm-ability-cols,.charsheet .hm-abilities .hm-action-display{grid-template-columns:2fr .7fr 1fr 1fr 48px}
+.charsheet .hm-action-head{border-bottom:1px solid #576779;text-transform:uppercase;font-size:11px;padding:5px 3px}
+.charsheet .hm-action-card{border-bottom:1px solid #718397;padding:4px 3px}
+.charsheet .hm-action-display{min-height:32px;font-size:12px}
+.charsheet .hm-action-name{font-weight:bold;overflow-wrap:anywhere}
+.charsheet .hm-action-display>span{min-width:0}
+.charsheet .hm-action-card .hm-edit-switch{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;pointer-events:none}
+.charsheet .hm-action-editor{display:none;padding:10px 8px;margin:5px 0 8px;background:rgba(232,237,247,.65);border:1px solid #65768c;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.charsheet .hm-action-editor label{font-size:11px;display:flex;flex-direction:column;gap:3px}
+.charsheet .hm-action-editor input{width:100%;background:rgba(255,255,255,.35)}
+.charsheet .hm-action-editor .hm-editor-description{grid-column:1/-1}
+.charsheet .hm-action-editor textarea{min-height:70px}
+.charsheet .hm-edit-switch:checked~.hm-action-editor{display:grid}
+.charsheet .hm-edit-button{display:block;text-align:center;cursor:pointer;border:1px solid #576779;border-radius:3px;padding:4px 2px;margin:0;font:11px Georgia,serif;background:#a2b2c8;color:#2c0048}
+.charsheet .hm-edit-switch:checked~.hm-action-display .hm-edit-button{background:#d6c4e3}
+.charsheet .hm-action-card button.hm-value-roll{display:block;width:100%;min-width:0;max-width:100%;padding:5px 2px;margin:0;border:1px solid #61748b;border-radius:3px;background:#cad5e6;color:#280047;text-align:center;cursor:pointer;font:12px Georgia,serif;white-space:normal;overflow-wrap:anywhere}
+.charsheet .hm-action-card button.hm-value-roll::before{content:none!important}
+.charsheet .hm-action-card button.hm-value-roll:hover{background:#e1d4ed}
+.charsheet .hm-action-card button.hm-value-roll span:empty::after{content:'—'}
+
+.charsheet .hm-action-card{position:relative}
+.charsheet .hm-action-card input.hm-edit-switch{position:absolute!important;top:7px;right:3px;opacity:1!important;pointer-events:auto!important;appearance:none;-webkit-appearance:none;display:block!important;width:46px!important;height:27px!important;min-width:46px!important;z-index:2;border:1px solid #576779!important;border-radius:3px!important;background:#a2b2c8!important;cursor:pointer}
+.charsheet .hm-action-card input.hm-edit-switch::after{content:'Edit';display:block;text-align:center;line-height:25px;font:11px/25px Georgia,serif;color:#2c0048}
+.charsheet .hm-action-card input.hm-edit-switch:checked{background:#d6c4e3!important}
+.charsheet .hm-action-card input.hm-edit-switch:checked::after{content:'Close'}
+
+
+.charsheet .hm-sheet {
+  width:760px; min-width:760px; max-width:760px;
+  height:1416.49px; min-height:1416.49px; max-height:1416.49px;
+  padding:0; border:3px double #354354;
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.charsheet .hm-header {
+  flex:0 0 216px; height:216px;
+  padding:12px 9px 0;
+  grid-template-rows:100px 101px;
+}
+.charsheet .hm-main {
+  flex:0 0 341px; height:341px; min-height:341px;
+  margin:0; padding:0;
+  grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;
+}
+.charsheet .hm-stat,.charsheet .hm-aura{min-width:0}
+.charsheet .hm-stat-score{height:96px}
+.charsheet .hm-skills{padding-top:14px}
+.charsheet .hm-aura-strength{height:90px}
+.charsheet .hm-shield{height:140px}
+.charsheet .hm-notes {
+  flex:0 0 84px; height:84px; min-height:84px;
+  margin:0; display:grid; grid-template-rows:repeat(3,28px);
+}
+.charsheet .hm-notes label{height:28px;min-height:28px}
+.charsheet .hm-tabs {
+  flex:0 0 20.18px; height:20.18px; min-height:20.18px;
+  margin:0; align-items:stretch;
+}
+.charsheet .hm-tabs label{padding:3px 0 1px;font-size:9px;line-height:14px;white-space:nowrap}
+.charsheet .hm-panels {
+  flex:1 1 auto; height:auto; min-height:0;
+  border-top:1px solid #526174;
+  overflow-y:auto;overflow-x:hidden;
+}
+.charsheet .hm-panel{min-height:100%;}
+
+.charsheet .hm-attacks .hm-attack-cols,
+.charsheet .hm-attacks .hm-action-display {
+  display:grid;
+  grid-template-columns:27.55% 9.93% 11.39% 14.30% minmax(0,1fr) 48px;
+  gap:0;
+  align-items:center;
+}
+.charsheet .hm-attacks .hm-action-display > *{min-width:0}
+.charsheet .hm-attacks .hm-action-head > span,
+.charsheet .hm-attacks .hm-action-display > span,
+.charsheet .hm-attacks .hm-action-display > button{
+  border-right:1px solid #74859a;
+}
+.charsheet .hm-action-head{min-height:25px}
+.charsheet .hm-attacks .hm-action-card input.hm-edit-switch{right:3px}
+.charsheet .hm-abilities .hm-action-display{grid-template-columns:2fr .65fr 1fr 1fr 48px}
+
+
+
+.charsheet .hm-rest-buttons { top:-27px; gap:3px; z-index:3; }
+.charsheet .hm-rest-buttons button[type=action] {
+  flex:1; min-width:0; margin:0; padding:2px 1px;
+  border:1px solid #52647c; border-radius:3px;
+  background:#c2cde0; color:#33004c;
+  font: bold 10px Georgia,serif; cursor:pointer;
+}
+.charsheet .hm-rest-buttons button[type=action]:hover {background:#e2d6ef;}
+.charsheet .hm-rest-buttons button[type=action]::before {content:none!important;}
+
+.charsheet .hm-logo{width:145px;height:75px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.charsheet .hm-logo img{display:block;width:100%;height:100%;object-fit:contain}
+.charsheet .hm-ident select{flex:1;min-width:0;width:100%;border:0;border-bottom:1px solid #445264;background:transparent;color:#101727;font:inherit}
+.charsheet .hm-shield{background:none;position:relative}
+.charsheet .hm-shield img{display:none;width:100%;height:100%;object-fit:contain}
+
+.charsheet .hm-sheet>input.hm-rank-radio[value="Iron"]:checked~.hm-main .hm-shield-iron{display:block}
+.charsheet .hm-sheet>input.hm-rank-radio[value="Bronze"]:checked~.hm-main .hm-shield-bronze{display:block}
+.charsheet .hm-sheet>input.hm-rank-radio[value="Silver"]:checked~.hm-main .hm-shield-silver{display:block}
+.charsheet .hm-sheet>input.hm-rank-radio[value="Gold"]:checked~.hm-main .hm-shield-gold{display:block}
+.charsheet .hm-sheet>input.hm-rank-radio{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;pointer-events:none!important}
+
+
+/* ===== BOX CUSTOMIZATION SETTINGS ===== */
+.charsheet .hm-sheet {
+  /* Main box border thickness */
+  --box-border-width: 2px;
+  /* Main box border color */
+  --box-border-color: #171717;
+  /* Box corner roundness */
+  --box-border-radius: 4px;
+  /* Shadow horizontal offset */
+  --box-shadow-x: 2px;
+  /* Shadow vertical offset */
+  --box-shadow-y: 3px;
+  /* Shadow blur amount */
+  --box-shadow-blur: 5px;
+  /* Shadow spread amount */
+  --box-shadow-spread: 0px;
+  /* Shadow color and transparency */
+  --box-shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+/* ===== BOX CUSTOMIZATION APPLICATION ===== */
+.charsheet .hm-sheet .hm-stat,
+.charsheet .hm-sheet .hm-aura,
+.charsheet .hm-sheet .hm-resource,
+.charsheet .hm-sheet .hm-combat,
+.charsheet .hm-sheet .hm-ident,
+.charsheet .hm-sheet .hm-deaths,
+.charsheet .hm-sheet .hm-komt,
+.charsheet .hm-sheet .hm-notes label,
+.charsheet .hm-sheet .hm-panels,
+.charsheet .hm-sheet .hm-action-card,
+.charsheet .hm-sheet .hm-action-editor,
+.charsheet .hm-sheet .hm-essence-slot {
+  /* Apply the customizable border thickness and color */
+  border: var(--box-border-width) solid var(--box-border-color);
+  /* Apply the customizable corner radius */
+  border-radius: var(--box-border-radius);
+  /* Apply the customizable shadow */
+  box-shadow: var(--box-shadow-x) var(--box-shadow-y) var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  /* Include the border in the element's allocated dimensions */
+  box-sizing: border-box;
+}
+
+/* ===== STAT AND AURA LAYOUT ===== */
+.charsheet .hm-sheet .hm-stat-score {
+  /* Center the main stat value without a visible modifier field */
+  justify-content: center;
+}
+.charsheet .hm-sheet .hm-aura-strength {
+  /* Space reserved for Aura minimum, maximum, and Strength label */
+  height: 90px;
+  /* Stack Aura fields vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+.charsheet .hm-sheet .hm-aura-values {
+  /* Align the minimum and maximum values on one line */
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+}
+.charsheet .hm-sheet .hm-aura-values label {
+  /* Display the Minimum and Maximum labels above their fields */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  color: #000000;
+}
+.charsheet .hm-sheet .hm-aura-values input {
+  /* Set the width of the Aura value fields */
+  width: 48px;
+  max-width: 48px;
+}
+.charsheet .hm-sheet .hm-aura-values > span {
+  /* Style the slash between Aura values */
+  font-size: 19px;
+  color: #000000;
+}
+.charsheet .hm-sheet .hm-aura-strength-label {
+  /* Display Strength as text only, without an input */
+  font-size: 12px;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* ===== TEXT COLORS ===== */
+.charsheet .hm-sheet,
+.charsheet .hm-sheet input,
+.charsheet .hm-sheet textarea,
+.charsheet .hm-sheet select,
+.charsheet .hm-sheet label,
+.charsheet .hm-sheet span,
+.charsheet .hm-sheet button,
+.charsheet .hm-sheet .hm-komt span,
+.charsheet .hm-sheet .hm-stars span {
+  /* Make ordinary text black */
+  color: #000000;
+}
+.charsheet .hm-sheet h3,
+.charsheet .hm-sheet h4,
+.charsheet .hm-sheet .hm-ident label,
+.charsheet .hm-sheet .hm-deaths b,
+.charsheet .hm-sheet .hm-resource b,
+.charsheet .hm-sheet .hm-combat label,
+.charsheet .hm-sheet .hm-notes label,
+.charsheet .hm-sheet .hm-edit-button,
+.charsheet .hm-sheet .hm-action-card button.hm-value-roll {
+  /* Keep the existing purple headings and accents purple */
+  color: #390057;
+}
+.charsheet .hm-sheet .hm-komt input:checked + span,
+.charsheet .hm-sheet .hm-stars input:checked + span {
+  /* Preserve visible selected-star accents */
+  color: #000000;
+}
+
+/* ===== RANK BACKGROUND AND TRANSPARENT BADGE OVERLAY ===== */
+.charsheet .hm-sheet .hm-shield { position: relative; overflow: hidden; }
+.charsheet .hm-sheet .hm-shield img.hm-shield-rank { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.charsheet .hm-sheet .hm-shield img.hm-shield-overlay { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; z-index: 2; }
+
+/* ===== REVERSE-TOGGLE STARS: ORIGINAL POSITION AND SPACING ===== */
+.charsheet .hm-sheet .hm-stars label { position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+.charsheet .hm-sheet .hm-stars span { display: block; position: relative; width: 31px; height: 31px; font-size: 0; text-shadow: none; color: transparent; }
+.charsheet .hm-sheet .hm-stars span::before { content: ''; position: absolute; inset: 0; background: transparent; clip-path: polygon(50% 2%, 62% 36%, 98% 36%, 69% 57%, 80% 94%, 50% 72%, 20% 94%, 31% 57%, 2% 36%, 38% 36%); }
+.charsheet .hm-sheet .hm-stars input:checked + span::before { content: ''; background: #000000; }
+.charsheet .hm-sheet .hm-stars input:checked + span { color: transparent; }
+
+
+/* ===== HEADER LOGO ALIGNMENT ===== */
+.charsheet .hm-header { position:relative; min-width:0; align-items:stretch; }
+.charsheet .hm-header .hm-logo { grid-column:1 / 3; grid-row:1; width:145px; height:75px; max-width:100%; max-height:75px; align-self:start; justify-self:start; overflow:hidden; position:relative; z-index:1; }
+.charsheet .hm-header .hm-logo img { display:block; width:100%; height:100%; object-fit:contain; object-position:left top; }
+.charsheet .hm-header .hm-ident { grid-column:1; grid-row:2; position:relative; z-index:2; align-self:start; min-width:0; }
+.charsheet .hm-header .hm-deaths { grid-column:2; grid-row:2; }
+
+/* ===== KOMT STAR ROW ALIGNMENT ===== */
+.charsheet .hm-header .hm-komt { grid-column:3; grid-row:2; align-self:start; justify-self:center; display:grid; grid-template-rows:repeat(4,22px); gap:0; width:48px; min-width:48px; padding:0; margin:0; }
+.charsheet .hm-header .hm-komt label { display:grid; grid-template-columns:17px 23px; align-items:center; justify-content:center; column-gap:3px; height:22px; min-height:22px; line-height:22px; margin:0; padding:0; font-size:15px; font-style:normal; text-align:center; white-space:nowrap; }
+.charsheet .hm-header .hm-komt input[type=checkbox] { position:absolute!important; width:1px!important; height:1px!important; opacity:0!important; }
+.charsheet .hm-header .hm-komt .hm-komt-star { display:block; width:21px; height:21px; line-height:21px; text-align:center; font-size:20px; font-family:Arial,sans-serif; font-style:normal; text-shadow:none; color:#000; cursor:pointer; }
+.charsheet .hm-header .hm-komt .hm-komt-star::before { content:'☆'; }
+.charsheet .hm-header .hm-komt input:checked + .hm-komt-star::before { content:'★'; }
+.charsheet .hm-header .hm-komt input:checked + .hm-komt-star::after { content:none!important; }
+
+/* ===== NOTES CLEARANCE BELOW STATS ===== */
+.charsheet .hm-sheet .hm-main { flex:0 0 341px; height:341px; min-height:341px; margin:0; overflow:visible; }
+.charsheet .hm-sheet .hm-notes { position:relative; z-index:1; flex:0 0 84px; height:84px; min-height:84px; margin:0; padding:0; display:grid; grid-template-rows:repeat(3,28px); clear:both; }
+.charsheet .hm-sheet .hm-notes label { margin:0; min-height:28px; height:28px; }
+.charsheet .hm-sheet .hm-stat, .charsheet .hm-sheet .hm-aura { height:100%; min-height:0; margin:0; }
+
+/* ===== SHIELD IMAGE LAYER ALIGNMENT ===== */
+.charsheet .hm-sheet .hm-shield { position:relative; display:block; width:90%; height:140px; margin:4px auto; overflow:visible; background:none; isolation:isolate; }
+.charsheet .hm-sheet .hm-shield img.hm-shield-rank,
+.charsheet .hm-sheet .hm-shield img.hm-shield-overlay { position:absolute; left:0; top:0; right:0; bottom:0; width:100%; height:100%; max-width:none; max-height:none; margin:0; padding:0; border:0; object-fit:fill; object-position:center; pointer-events:none; }
+.charsheet .hm-sheet .hm-shield img.hm-shield-rank { z-index:1; display:none; }
+.charsheet .hm-sheet .hm-shield img.hm-shield-overlay { z-index:2; display:block; }
+.charsheet .hm-sheet > input.hm-rank-radio[value="Iron"]:checked ~ .hm-main .hm-shield img.hm-shield-iron { display:block; }
+.charsheet .hm-sheet > input.hm-rank-radio[value="Bronze"]:checked ~ .hm-main .hm-shield img.hm-shield-bronze { display:block; }
+.charsheet .hm-sheet > input.hm-rank-radio[value="Silver"]:checked ~ .hm-main .hm-shield img.hm-shield-silver { display:block; }
+.charsheet .hm-sheet > input.hm-rank-radio[value="Gold"]:checked ~ .hm-main .hm-shield img.hm-shield-gold { display:block; }
+
+/* ===== BADGE STAR POSITION CONTROLS ===== */
+.charsheet .hm-sheet { --badge-star-size:26px; --badge-star-bottom:1px; --badge-star-left:19%; --badge-star-middle:50%; --badge-star-right:81%; }
+.charsheet .hm-sheet .hm-aura { position:relative; }
+.charsheet .hm-sheet .hm-stars { position:absolute; left:0; width:100%; bottom:0; height:100%; display:block; z-index:5; pointer-events:none; margin:0; padding:0; }
+.charsheet .hm-sheet .hm-stars label { position:absolute; display:block; bottom:var(--badge-star-bottom); width:var(--badge-star-size); height:var(--badge-star-size); margin:0; padding:0; transform:translateX(-50%); cursor:pointer; pointer-events:auto; }
+.charsheet .hm-sheet .hm-stars .hm-star-one { left:var(--badge-star-left); }
+.charsheet .hm-sheet .hm-stars .hm-star-two { left:var(--badge-star-middle); }
+.charsheet .hm-sheet .hm-stars .hm-star-three { left:var(--badge-star-right); }
+.charsheet .hm-sheet .hm-stars input[type=checkbox] { position:absolute!important; inset:0!important; width:100%!important; height:100%!important; min-width:0!important; margin:0!important; opacity:0!important; z-index:2; cursor:pointer; }
+.charsheet .hm-sheet .hm-stars span { display:block; position:absolute; inset:0; width:100%; height:100%; font-size:0; color:transparent!important; text-shadow:none!important; background:none!important; pointer-events:none; }
+.charsheet .hm-sheet .hm-stars span::before { content:''!important; position:absolute; inset:0; background:transparent; clip-path:polygon(50% 2%,62% 36%,98% 36%,69% 57%,80% 94%,50% 72%,20% 94%,31% 57%,2% 36%,38% 36%); }
+.charsheet .hm-sheet .hm-stars input:checked + span::before { content:''!important; background:#000!important; }
+
+
+/* ===== HEADER AND MAIN STATS CLEARANCE ===== */
+.charsheet .hm-sheet .hm-header {
+  /* Reserve enough height for the full Name, Nature, Role and Rank box */
+  flex: 0 0 294px;
+  height: 294px;
+  min-height: 294px;
+  /* Logo row and character information row */
+  grid-template-rows: 126px 156px;
+  align-items: start;
+}
+.charsheet .hm-sheet .hm-header .hm-ident {
+  /* Keep the character information above the stat boxes */
+  align-self: start;
+  height: auto;
+  min-height: 0;
+}
+.charsheet .hm-sheet .hm-header .hm-komt,
+.charsheet .hm-sheet .hm-header .hm-deaths,
+.charsheet .hm-sheet .hm-header .hm-resource,
+.charsheet .hm-sheet .hm-header .hm-combat {
+  /* Align all header controls to the top of their grid row */
+  align-self: start;
+}
+.charsheet .hm-sheet .hm-header .hm-resource,
+.charsheet .hm-sheet .hm-header .hm-combat {
+  /* Keep resource panels at their previous height */
+  min-height: 126px;
+}
+.charsheet .hm-sheet .hm-main {
+  /* Main stats begin after the complete header, without overlap */
+  position: relative;
+  z-index: 0;
+  flex: 0 0 341px;
+  height: 341px;
+  margin-top: 0;
+}
+.charsheet .hm-sheet .hm-header .hm-logo {
+  /* Logo stays in the top row only */
+  height: 75px;
+  max-height: 75px;
+}
+.charsheet .hm-sheet .hm-rest-buttons {
+  /* Rest controls remain above the stat heading without colliding with Rank */
+  top: 3px;
+  position: relative;
+  margin-bottom: 3px;
+}
+.charsheet .hm-sheet .hm-speed-toggles.hm-rest-buttons {
+  /* Buttons are laid out within the Speed stat box */
+  position: relative;
+  left: auto;
+  right: auto;
+  width: 100%;
+  justify-content: center;
+}
+
+/* ===== RANK BADGE IMAGE ALIGNMENT CONTROLS ===== */
+.charsheet .hm-sheet {
+  /* Badge image area height, including the three stars */
+  --badge-image-height: 160px;
+  /* Background image horizontal adjustment */
+  --badge-background-x: 0px;
+  /* Background image vertical adjustment */
+  --badge-background-y: 0px;
+  /* Background image scale */
+  --badge-background-scale: 1;
+  /* Foreground outline horizontal adjustment */
+  --badge-outline-x: -3px;
+  /* Foreground outline vertical adjustment */
+  --badge-outline-y: -2px;
+  /* Foreground outline scale */
+  --badge-outline-scale: 1;
+  /* Clickable black star size */
+  --badge-star-size: 29px;
+  /* Star position from the bottom of the badge image */
+  --badge-star-bottom: 3px;
+  /* First star center position */
+  --badge-star-left: 20%;
+  /* Middle star center position */
+  --badge-star-middle: 50%;
+  /* Third star center position */
+  --badge-star-right: 80%;
+}
+.charsheet .hm-sheet .hm-aura h4 {
+  /* Reduce excess space above the badge */
+  margin: 3px 0;
+  line-height: 1.1;
+}
+.charsheet .hm-sheet .hm-shield {
+  /* The shield and its stars share one positioning coordinate system */
+  position: relative;
+  width: 100%;
+  height: var(--badge-image-height);
+  margin: 0 auto;
+  overflow: hidden;
+  background: none;
+}
+.charsheet .hm-sheet .hm-shield img.hm-shield-rank,
+.charsheet .hm-sheet .hm-shield img.hm-shield-overlay {
+  /* All image layers use exactly the same dimensions and origin */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+.charsheet .hm-sheet .hm-shield img.hm-shield-rank {
+  /* Fine adjustment for the selected rank artwork */
+  transform: translate(var(--badge-background-x), var(--badge-background-y)) scale(var(--badge-background-scale));
+  transform-origin: center center;
+  z-index: 1;
+}
+.charsheet .hm-sheet .hm-shield img.hm-shield-overlay {
+  /* Fine adjustment for the transparent shield outline */
+  transform: translate(var(--badge-outline-x), var(--badge-outline-y)) scale(var(--badge-outline-scale));
+  transform-origin: center center;
+  z-index: 2;
+  display: block;
+}
+.charsheet .hm-sheet .hm-shield .hm-stars {
+  /* Stars are over the stars already printed in the rank artwork */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+.charsheet .hm-sheet .hm-shield .hm-stars label {
+  /* Each invisible hit area matches the printed star location */
+  position: absolute;
+  bottom: var(--badge-star-bottom);
+  width: var(--badge-star-size);
+  height: var(--badge-star-size);
+  transform: translateX(-50%);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.charsheet .hm-sheet .hm-shield .hm-stars .hm-star-one { left: var(--badge-star-left); }
+.charsheet .hm-sheet .hm-shield .hm-stars .hm-star-two { left: var(--badge-star-middle); }
+.charsheet .hm-sheet .hm-shield .hm-stars .hm-star-three { left: var(--badge-star-right); }
+.charsheet .hm-sheet .hm-shield .hm-stars span,
+.charsheet .hm-sheet .hm-shield .hm-stars span::before {
+  /* Unchecked stars draw nothing, leaving the printed artwork visible */
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+}
+.charsheet .hm-sheet .hm-shield .hm-stars input:checked + span::before {
+  /* Checked stars cover the printed star interior with black */
+  background: #000000 !important;
+  clip-path: polygon(50% 3%,62% 36%,98% 36%,69% 57%,80% 94%,50% 72%,20% 94%,31% 57%,2% 36%,38% 36%);
+}
+
+/* ===== SPEED REST BUTTON PLACEMENT ===== */
+.charsheet .hm-sheet .hm-stat:nth-child(2) { position: relative; }
+.charsheet .hm-sheet .hm-stat:nth-child(2) .hm-rest-buttons { position: absolute; top: -30px; left: 0; right: 0; width: 100%; }
+
+/* ===== RESTORED MAIN STAT COLUMN HEIGHT ===== */
+.charsheet .hm-sheet .hm-header {
+  flex: 0 0 294px;
+  height: 294px;
+  min-height: 294px;
+}
+.charsheet .hm-sheet .hm-main {
+  flex: 0 0 425px;
+  height: 425px;
+  min-height: 425px;
+  margin: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+}
+.charsheet .hm-sheet .hm-main > .hm-stat,
+.charsheet .hm-sheet .hm-main > .hm-aura {
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+}
+.charsheet .hm-sheet .hm-stat-score {
+  height: 96px;
+  min-height: 96px;
+}
+.charsheet .hm-sheet .hm-skills {
+  padding-top: 14px;
+}
+/* ===== NOTES AND LOWER CONTENT SPACE ===== */
+.charsheet .hm-sheet .hm-notes {
+  flex: 0 0 84px;
+  height: 84px;
+  min-height: 84px;
+}
+.charsheet .hm-sheet .hm-tabs {
+  flex: 0 0 20.18px;
+  height: 20.18px;
+  min-height: 20.18px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.charsheet .hm-sheet .hm-panels {
+  flex: 1 1 0;
+  height: auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* ===== SEVEN FOLDER TAB SELECTIONS ===== */
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(1):checked ~ .hm-panels .hm-attacks,
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(2):checked ~ .hm-panels .hm-inventory,
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(3):checked ~ .hm-panels .hm-familiars,
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(4):checked ~ .hm-panels .hm-essence1,
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(5):checked ~ .hm-panels .hm-essence2,
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(6):checked ~ .hm-panels .hm-essence3,
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(7):checked ~ .hm-panels .hm-essence4 {
+  display: block;
+}
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(1):checked ~ .hm-tabs label:nth-child(1),
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(2):checked ~ .hm-tabs label:nth-child(2),
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(3):checked ~ .hm-tabs label:nth-child(3),
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(4):checked ~ .hm-tabs label:nth-child(4),
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(5):checked ~ .hm-tabs label:nth-child(5),
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(6):checked ~ .hm-tabs label:nth-child(6),
+.charsheet .hm-sheet > input.hm-tab-control:nth-child(7):checked ~ .hm-tabs label:nth-child(7) {
+  background: #869bb5;
+  color: #2c0048;
+  font-weight: bold;
+}
+
+/* ===== BAR 1 POSITION BELOW LOGO ===== */
+.charsheet .hm-sheet .hm-header {
+  box-sizing: border-box;
+  flex: 0 0 273px;
+  height: 273px;
+  min-height: 273px;
+  grid-template-rows: 78px 180px;
+  row-gap: 3px;
+  align-items: stretch;
+}
+/* ===== LOGO AND BAR 1 ALIGNMENT ===== */
+.charsheet .hm-sheet .hm-logo {
+  height: 75px;
+  align-self: start;
+}
+.charsheet .hm-sheet .hm-ident,
+.charsheet .hm-sheet .hm-deaths,
+.charsheet .hm-sheet .hm-resource,
+.charsheet .hm-sheet .hm-combat {
+  grid-row: 2;
+}
+.charsheet .hm-sheet .hm-komt {
+  grid-row: 2;
+  align-self: start;
+}
+/* ===== GAP BETWEEN BAR 1 AND MAIN STATS ===== */
+.charsheet .hm-sheet .hm-main {
+  flex: 0 0 425px;
+  height: 425px;
+  min-height: 425px;
+  margin-top: 38px;
+}
+/* ===== REST BUTTONS WITHIN CLEAR GAP ===== */
+.charsheet .hm-sheet .hm-stat:nth-child(2) .hm-rest-buttons {
+  top: -32px;
+  z-index: 5;
+}
+
+/* ===== AC AND MOVEMENT DISPLAY ===== */
+/* Remove number spinner arrows in Chromium and Safari */
+.charsheet .hm-ac::-webkit-inner-spin-button,
+.charsheet .hm-ac::-webkit-outer-spin-button,
+.charsheet .hm-movement::-webkit-inner-spin-button,
+.charsheet .hm-movement::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+/* Remove number spinner arrows in Firefox and other browsers */
+.charsheet .hm-ac, .charsheet .hm-movement { appearance: textfield; -moz-appearance: textfield; color: #000; background: transparent; }
